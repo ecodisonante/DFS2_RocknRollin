@@ -81,3 +81,7 @@ function enviaForm() {
     else repass.setCustomValidity("");
 
 }
+
+function limpiaForm() {
+    document.getElementById("registro-form").reset();
+}
