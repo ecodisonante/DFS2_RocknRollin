@@ -62,6 +62,9 @@ function loadCat(cat) {
 }
 
 function enviaForm() {
+
+    var passValidator = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/
+
     var pass = document.getElementById("passwd");
     var repass = document.getElementById("re-passwd");
     var fechanac = document.getElementById("fechanac");
@@ -69,6 +72,10 @@ function enviaForm() {
 
     if (age < 13) fechanac.setCustomValidity("Debes tener mas de 13 años para registrarte");
     else fechanac.setCustomValidity("");
+
+    if (pass.value.length > 18 || pass.value.length < 6) pass.setCustomValidity("Contraseña debe tener entre 6 y 18 caracteres");
+    else if (!passValidator.test(pass.value)) pass.setCustomValidity("Contraseña debe tener mayúsculas, minúsculas y números");
+    else pass.setCustomValidity("");
 
     if (pass.value != repass.value) repass.setCustomValidity("Tus contraseñas no coinciden");
     else repass.setCustomValidity("");
